@@ -1,0 +1,9 @@
+version: "3"
+services:
+  python:
+    build: .
+    volumes:
+      - .:/code
+    command: bash -c "gcc sample.c -shared -o libsample.so && python3 main.py"
+    environment:
+      - LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
